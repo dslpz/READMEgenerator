@@ -7,45 +7,45 @@ const generateMarkdown = require('./utils/generateMarkdown');
 const questions = [
     {
         type: "input",
-        message: "What is the title of your project?",
+        message: "Please enter your project title",
         name: "title"
     },
     {
         type: "input",
-        message: "Provide a short description explaining the what, why, and how of your project",
+        message: "Please enter a description of your project",
         name: "description"
-    }
-    {
-        type: "input",
-        message: "What are the steps required to install your project?",
-        name: "steps required to install"
     },
     {
         type: "input",
-        message: "Provide instructions and examples for use.",
-        name: "instructions"
+        message: "Please enter installation instructions for your project",
+        name: "installation"
     },
     {
         type: "input",
-        message: "List your collaborators",
-        name: "collaborators",
+        message: "Please enter usage information for your project",
+        name: "usage information"
+    },
+    {
+        type: "input",
+        message: "Please enter contribution guidelines for your project",
+        name: "contribution guidelines",
 
     },
     {
         type: "input",
-        message:"Did you use any third-party assests that require attribution",
-        name: "Third party assets"
+        message:"Please enter test instructions for your project",
+        name: "tests"
     },
     {
         type: "input",
-        message:"If your followed tutorials include links",
+        message:"Please choose a license for your project",
         name: "tutorials"
-    }
+    },
     {
         type: "input",
-        message: "Choose a kind of license"
+        message: "Please enter your GitHub username",
         name: "license"
-    }
+    },
 
 ];
 
