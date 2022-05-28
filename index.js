@@ -7,12 +7,12 @@ const generateMarkdown = require('./utils/generateMarkdown');
 const questions = [
     {
         type: "input",
-        message: "Please enter your project title",
+        message: "Please enter your project title.",
         name: "title"
     },
     {
         type: "input",
-        message: "Please enter a description of your project",
+        message: "Please enter a description of your project.",
         name: "description"
     },
     {
@@ -37,23 +37,56 @@ const questions = [
         name: "tests"
     },
     {
-        type: "input",
+        type: "list",
         message:"Please choose a license for your project",
-        name: "tutorials"
+        name: "license",
+        choices: ["MIT", "none"]
     },
     {
         type: "input",
         message: "Please enter your GitHub username",
-        name: "license"
+        name: "github username"
     },
 
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    var readMeText = `# ${input.title}
+## Table of Contents
+[Description](#description)
+[Installation](#installation)
+[Usage](Usage)
+[Contribution](Contribution)
+[Testing](Testing)
+[License](License)
+[Questions](Questions)
+## Description
+${input.description}
+## Installation
+${input.installation}
+## Usage
+${input.usage}
+## Contribution
+${input.contribution}
+## Testing
+${input.testing}
+## License
+${input.license}
+## Questions
+${input.github}`
 
-// TODO: Create a function to initialize app
-function init() {}
+fs.writeToFile("./README.md", readMeText, err => {
+    if (err) {
+        console.error(err)
+        return
+    }
+    })
 
-// Function call to initialize app
-init();
+};
+
+init() 
+    then(data => {
+        console.log("README created! Check 'readme' folder");
+        return writeToFile("./readme/README.md", generateMarkdown({...data}))
+        });
