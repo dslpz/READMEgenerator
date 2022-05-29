@@ -67,6 +67,6 @@ function writeToFile(fileName, data) {
 init()
 .then(data => {
     console.log("Success! Check 'readme' folder");
-    return writeToFile("./README/README.md", generateMarkdown({...data}))
+    return writeToFile("./README", generateMarkdown({...data}))
 })
 
