@@ -11,7 +11,7 @@
 ## Description
 description
 ## Installation
-installation
+installation instructions
 ## Usage
 undefined
 ## Contribution
