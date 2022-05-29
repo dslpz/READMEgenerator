@@ -13,19 +13,19 @@ function generateMarkdown(data) {
 [License](License)
 [Questions](Questions)
 ## Description
-${input.description}
+${data.description}
 ## Installation
-${input.installation}
+${data.installation}
 ## Usage
-${input.usage}
+${data.usage}
 ## Contribution
-${input.contribution}
+${data.contribution}
 ## Testing
-${input.testing}
+${data.testing}
 ## License
-${input.license}
+${data.license}
 ## Questions
-${input.github}
+${data.github}
 `;
 }
 

@@ -4,7 +4,8 @@ const fs = require('fs');
 const generateMarkdown = require('./generateMarkdown.js');
 
 // TODO: Create an array of questions for user input 
-inquirer.prompt([
+function init() {
+    return inquirer.prompt([
     {
         type: "input",
         message: "Please enter your projects title.",
@@ -45,13 +46,27 @@ inquirer.prompt([
     {
         type: "input",
         message: "Please enter your GitHub username.",
-        name: "github username"
+        name: "github",
     }
-])
-;
+]);
+}
+function writeToFile(fileName, data) {
+    return new Promise((resolve, reject) => {
+        fs.writeFile(fileName, data, err =>{
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: "Success! README created!"
+            })
+        })
+    });
+}
+init()
+.then(data => {
+    console.log("Success! Check 'readme' folder");
+    return writeToFile("./README/README.md", generateMarkdown({...data}))
+})
 
-init() 
-    then(data => {
-        console.log("success");
-        return writeToFile("./readme/README.md", generateMarkdown({...data}))
-        });
