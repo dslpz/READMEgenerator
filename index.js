@@ -1,13 +1,13 @@
 // TODO: Include packages needed for this application
-const inquirer = require('inquire');
+const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown');
+const generateMarkdown = require('./generateMarkdown.js');
 
-// TODO: Create an array of questions for user input
-const questions = [
+// TODO: Create an array of questions for user input 
+inquirer.prompt([
     {
         type: "input",
-        message: "Please enter your project title.",
+        message: "Please enter your projects title.",
         name: "title"
     },
     {
@@ -17,76 +17,41 @@ const questions = [
     },
     {
         type: "input",
-        message: "Please enter installation instructions for your project",
+        message: "Please enter the installation instructions for your project.",
         name: "installation"
     },
     {
         type: "input",
-        message: "Please enter usage information for your project",
+        message: "Please enter usage information for your project.",
         name: "usage information"
     },
     {
         type: "input",
-        message: "Please enter contribution guidelines for your project",
+        message: "Please enter contribution guidelines for your project.",
         name: "contribution guidelines",
 
     },
     {
         type: "input",
-        message:"Please enter test instructions for your project",
+        message:"Please enter test instructions for your project.",
         name: "tests"
     },
     {
         type: "list",
         message:"Please choose a license for your project",
         name: "license",
-        choices: ["MIT", "none"]
+        choices: ["MIT", "Apache 2.0","none"]
     },
     {
         type: "input",
-        message: "Please enter your GitHub username",
+        message: "Please enter your GitHub username.",
         name: "github username"
-    },
-
-];
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    var readMeText = `# ${input.title}
-## Table of Contents
-[Description](#description)
-[Installation](#installation)
-[Usage](Usage)
-[Contribution](Contribution)
-[Testing](Testing)
-[License](License)
-[Questions](Questions)
-## Description
-${input.description}
-## Installation
-${input.installation}
-## Usage
-${input.usage}
-## Contribution
-${input.contribution}
-## Testing
-${input.testing}
-## License
-${input.license}
-## Questions
-${input.github}`
-
-fs.writeToFile("./README.md", readMeText, err => {
-    if (err) {
-        console.error(err)
-        return
     }
-    })
-
-};
+])
+;
 
 init() 
     then(data => {
-        console.log("README created! Check 'readme' folder");
+        console.log("success");
         return writeToFile("./readme/README.md", generateMarkdown({...data}))
         });
